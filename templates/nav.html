@@ -1,0 +1,24 @@
+<nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="nav-links">
+        <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Início</a></li>
+        <li><a href="/cadastro_doacao" class="{% if request.path == '/cadastro_doacao' %}active{% endif %}">Entrada de Doações</a></li>
+        <li><a href="/estoque" class="{% if request.path == '/estoque' %}active{% endif %}">Estoque</a></li>
+        <li><a href="/historico_entrada" class="{% if request.path == '/historico_entrada' %}active{% endif %}">Historico entrada de alimentos</a></li>
+        <li><a href="/cadastro_familia" class="{% if request.path == '/cadastro_familia' %}active{% endif %}">Cadastro De Familia</a></li>
+        <li><a href="/lista_familia" class="{% if request.path == '/lista_familia' %}active{% endif %}">Listar Familias</a></li>
+        <li><a href="/registro_doacao" class="{% if request.path == '/registro_doacao' %}active{% endif %}">Distribuição de Alimentos</a></li>
+        <li><a href="/historico_doacoes" class="{% if request.path == '/historico_doacoes' %}active{% endif %}">Historico de Doações</a></li>
+    </ul>
+</nav>
+
+<script>
+    function toggleMenu() {
+        var navLinks = document.getElementById("nav-links");
+        if (navLinks.style.display === "block") {
+            navLinks.style.display = "none";
+        } else {
+            navLinks.style.display = "block";
+        }
+    }
+</script>

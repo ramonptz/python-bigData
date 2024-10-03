@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Pastoral Social - Relatório</title>
+</head>
+<body>
+    <header>
+        <img src="../static/img/sao-paulo.png" alt="Imagem Esquerda" class="logo">
+        <div>
+            <h1>Relatório de Estoque</h1>
+            {% include 'nav.html' %}
+        </div>
+        <img src="../static/img/sao-pedro.png" alt="Imagem Direita" class="logo">
+
+    </header>
+    <main>
+        <h2>Estoque Atualizado</h2>
+        <table>
+            <tr>
+                <th>Tipo de Alimento</th>
+                <th>Unidade de Medida</th>
+                <th>Quantidade total</th>
+                <th>Quantidade Necessária</th>
+            </tr>
+            {% for item in relatorio %}
+            <tr>
+                <td>{{ item.Tipo_Alimento }}</td>
+                <td>{{ item.Medida }}</td>
+                <td>{{ item.Quantidade }}</td>
+                <td class="{% if item.Quantidade < item.Quantidade_Necessaria %}highlight{% endif %}">
+                    {{ item.Quantidade_Necessaria }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>

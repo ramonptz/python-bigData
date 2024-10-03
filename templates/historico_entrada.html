@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Histórico de Entradas de Alimentos</title>
+</head>
+
+<body>
+    <header>
+        <img src="../static/img/sao-paulo.png" alt="Imagem Esquerda" class="logo">
+        <div>
+            <h1>Distribuição de alimentos</h1>
+            {% include 'nav.html' %}
+        </div>
+        <img src="../static/img/sao-pedro.png" alt="Imagem Direita" class="logo">
+    </header>
+    <main>
+        <h1>Histórico de Entradas de Alimentos</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tipo de Alimento</th>
+                    <th>Quantidade</th>
+                    <th>Origem</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entrada in historico %}
+                <tr>
+                    <td>
+                        {% set data_str = entrada['Data'].strftime('%d-%m-%Y') %}
+                        {{ data_str }}  <!-- Formata para dd-mm-YYYY -->
+                    </td>
+                    <td>{{ entrada['Tipo_Alimento'] }}</td>
+                    <td>{{ entrada['Quantidade'] }}</td>
+                    <td>{{ entrada['Origem'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Histórico de Doações</title>
+</head>
+<body>
+    <header>
+        <img src="../static/img/sao-paulo.png" alt="Imagem Esquerda" class="logo">
+        <div>
+            <h1>Histórico de Doações</h1>
+            {% include 'nav.html' %}
+        </div>
+        <img src="../static/img/sao-pedro.png" alt="Imagem Direita" class="logo">
+    </header>
+    <main>
+        <h2>Histórico de Doações</h2>
+
+        <form action="/historico_doacoes" method="post">
+            <label for="familia">Filtrar por Família:</label><br>
+            <select id="familia" name="familia" required>
+                <option value="">Todas</option>
+                {% for familia in familias %}
+                <option value="{{ familia[0] }}">{{ familia[0] }} - {{ familia[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Filtrar">
+        </form>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Família</th>
+                    <th>Tipo de Alimento</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doacao in doacoes %}
+                <tr>
+                    <td>{{ doacao[0] }}</td>
+                    <td>{{ doacao[1] }}</td>
+                    <td>{{ doacao[2] }}</td>
+                    <td>{{ doacao[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

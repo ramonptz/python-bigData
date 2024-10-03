@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Lista de Famílias</title>
+</head>
+<header>
+    <img src="../static/img/sao-paulo.png" alt="Imagem Esquerda" class="logo">
+    <div>
+        <h1>Familias Atendidas</h1>
+        {% include 'nav.html' %}
+    </div>
+    <img src="../static/img/sao-pedro.png" alt="Imagem Direita" class="logo">
+</header>
+<body>
+    <main>    
+        <h2>Lista de Famílias Assistidas</h2>
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Responsável</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+            </tr>
+            {% for familia in familias %}
+            <tr>
+                <td>{{ familia[0] }}</td>
+                <td>{{ familia[1] }}</td>
+                <td>{{ familia[2] }}</td>
+                <td>{{ familia[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>

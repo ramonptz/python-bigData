@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Cadastro de Recebimento de Doações</title>
+</head>
+<body>
+    <header>
+        <img src="../static/img/sao-paulo.png" alt="Imagem Esquerda" class="logo">
+        <div>
+            <h1>Recebimento de Alimentos</h1>
+            {% include 'nav.html' %}
+        </div>
+        <img src="../static/img/sao-pedro.png" alt="Imagem Direita" class="logo">    
+    </header>
+    <main>
+        <h2>Registrar Recebimento de Alimento</h2>
+        <form action="/cadastro_doacao" method="POST">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required>
+            <br>
+            
+            <label for="tipo_alimento">Tipo de Alimento:</label>
+            <select name="tipo_alimento" id="tipo_alimento" required>
+                <!-- Exiba os tipos de alimentos disponiveis no estoque -->
+                {% for alimento in tipos_alimentos %}
+                    <option value="{{ alimento }}">{{ alimento }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required>
+            <br>
+            
+            <label for="origem">Origem:</label>
+            <input type="text" id="origem" name="origem" required>
+            <br>
+            
+            <button type="submit">Cadastrar Doação</button>
+        </form>
+    </main>
+</body>
+</html>

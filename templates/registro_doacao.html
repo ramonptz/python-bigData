@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Registro de Doação</title>
+</head>
+<body>
+    <header>
+        <img src="../static/img/sao-paulo.png" alt="Imagem Esquerda" class="logo">
+        <div>
+        <h1>Distribuição de alimentos</h1>
+        {% include 'nav.html' %}
+    </div>
+    <img src="../static/img/sao-pedro.png" alt="Imagem Direita" class="logo">
+    </header>
+    <main>
+        <h1>Distribuir alimentos</h1>
+        <form method="POST">
+            <label for="familia">Selecionar Família:</label>
+            <select name="familia" id="familia">
+                {% for familia in familias %}
+                    <option value="{{ familia[0] }}">{{ familia[1] }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="tipo_alimento">Tipo de Alimento:</label>
+            <select name="tipo_alimento" id="tipo_alimento" onchange="updateQuantidade()">
+                <option value="">Selecione o alimento</option>
+                {% for tipo in tipos_alimentos %}
+                    <option value="{{ tipo['Tipo_Alimento'] }}" data-quantidade="{{ tipo['Quantidade'] }}" data-medida="{{tipo['Medida']}}">
+                        {{ tipo['Tipo_Alimento'] }}
+                    </option>
+                {% endfor %}
+            </select>
+        
+            <label for="quantidade">Quantidade:</label>
+            <select name="quantidade" id="quantidade">
+                <!-- espaço que seraa preenchido pelo JS -->
+            </select>
+        
+            <button type="submit">Registrar Doação</button>
+        </form>
+
+        <script>
+            function updateQuantidade() {
+                var tipoAlimentoSelect = document.getElementById('tipo_alimento');
+                var quantidadeSelect = document.getElementById('quantidade');
+                
+                // Limpar opções atuais do campo de quantidade
+                quantidadeSelect.innerHTML = '';
+        
+                // Verificar o tipo de alimento selecionado
+                var selectedOption = tipoAlimentoSelect.options[tipoAlimentoSelect.selectedIndex];
+                var maxQuantidade = selectedOption.getAttribute('data-quantidade');
+                var medida = selectedOption.getAttribute('data-medida'); // Pegando a medida
+        
+                // Verificar se há uma quantidade máxima e medida válidas
+                if (maxQuantidade && medida) {
+                    maxQuantidade = parseInt(maxQuantidade);
+        
+                    if (maxQuantidade > 0) {
+                        // Criar as opções de quantidade concatenadas com a medida
+                        for (var i = 1; i <= maxQuantidade; i++) {
+                            var option = document.createElement('option');
+                            option.value = i;
+                            option.text = i + ' ' + medida; // Concatenando a quantidade com a medida
+                            quantidadeSelect.appendChild(option);
+                        }
+                    } else {
+                        // Caso não haja quantidade disponível
+                        var option = document.createElement('option');
+                        option.value = 0;
+                        option.text = 'Indisponível';
+                        quantidadeSelect.appendChild(option);
+                    }
+                } else {
+                    // Caso algo dê errado, adicionar uma opção padrão
+                    var option = document.createElement('option');
+                    option.value = '';
+                    option.text = 'Selecione um tipo de alimento';
+                    quantidadeSelect.appendChild(option);
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>

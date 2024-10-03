@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Muda a direção do layout para coluna */
+        align-items: flex-start; /* Alinha itens à esquerda */
+        background: #2c3e50; /* Muda a cor de fundo */
+        padding: 20px; /* Aumenta o padding para um layout mais espaçado */
+    }
+    
+    nav {
+        width: 100%; /* Faz a navegação ocupar toda a largura */
+    }
+
+    nav a {
+        display: block; /* Faz os links ocuparem toda a largura disponível */
+        margin: 5px 0; /* Adiciona espaçamento entre os links */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+}
+
+header {
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+nav a {
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 2px solid #717171;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #35424a;
+    color: white;
+    text-align: center;
+}
+
+img {
+    max-width: 100%; /* A imagem não pode ultrapassar a largura do seu contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+header img {
+    display: block; /* Para garantir que as imagens sejam exibidas como blocos */
+    margin: 0 auto; /* Centraliza as imagens horizontalmente */
+}
+
+.logo {
+    max-width: 100px; /* Tamanho máximo da imagem */
+}
+
+/* Estilo do menu de navegação */
+nav ul {
+    list-style-type: none;  /* Remove os pontos antes dos itens */
+    padding: 0;
+    margin: 0;
+    display: flex;  /* Alinha os itens horizontalmente */
+    justify-content: center;  /* Centraliza os itens (opcional) */
+    white-space: nowrap;  /* Impede que os itens quebrem de linha */
+}
+
+nav ul li {
+    margin-right: -15px;  
+}
+
+nav ul li a {
+    text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;  /* Cor padrão dos links */
+    padding: 10px 10px;  /* Espaçamento interno do botão */
+    transition: background-color 0.3s, color 0.3s;  /* Transição suave para o efeito */
+    display: inline-block;  /* Garante que os itens fiquem na mesma linha */
+}
+
+/* Efeito ao passar o mouse por cima do item do menu */
+nav ul li a:hover {
+    background-color: #f0f0f0;  /* Cor de fundo ao passar o mouse */
+    color: #007bff;  /* Cor do texto ao passar o mouse */
+}
+
+/* Efeito para o item selecionado */
+nav ul li a.active {
+    background-color: #007bff;  /* Cor de fundo do item ativo */
+    color: #fff;  /* Cor do texto do item ativo */
+}
+
+/* MENU */
+
+.menu-toggle {
+    display: none; /* Esconde o botão em telas grandes */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    font-size: 30px; /* Tamanho do ícone */
+    color: white; /* Cor do ícone */
+}
+
+/* Exibe o botão em dispositivos móveis */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mostra o botão em telas menores */
+        margin-bottom: 10px; /* Espaçamento abaixo do botão */
+    }
+
+    #nav-links {
+        display: none; /* Esconde os links por padrão */
+        width: 100%; /* Faz os links ocuparem toda a largura */
+    }
+
+    nav ul {
+        flex-direction: column; /* Muda a direção para coluna */
+    }
+}
+
+/* Estilos para o formulário */
+form {
+    max-width: 400px; /* Largura máxima do formulário */
+    margin: 20px auto; /* Centraliza o formulário */
+    padding: 20px; /* Adiciona espaço interno */
+    border: 1px solid #ccc; /* Borda do formulário */
+    border-radius: 10px; /* Bordas arredondadas */
+    background-color: #f9f9f9; /* Cor de fundo do formulário */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do formulário */
+}
+
+/* Estilos para os campos de entrada */
+input[type="text"],
+input[type="number"],
+input[type="date"]{
+    width: calc(100% - 20px); /* Largura total com espaço para a borda */
+    padding: 10px; /* Espaçamento interno */
+    margin: 10px 0; /* Margem acima e abaixo */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Transição para a borda */
+}
+
+/* Estilos específicos para o campo select */
+
+select {
+    width: 100%; /* Largura total do campo */
+    padding: 10px; /* Espaçamento interno */
+    margin: 10px 0; /* Margem acima e abaixo */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: border-color 0.3s; /* Transição para a borda */
+}
+
+/* Mudança de cor da borda ao focar no campo */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    outline: none; /* Remove contorno padrão */
+}
+
+/* Estilos para o botão de submit */
+button[type="submit"] {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remove borda padrão */
+    padding: 10px 15px; /* Espaçamento interno */
+    margin-top: 10px; /* Margem acima */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para pointer */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s; /* Transição para a cor de fundo */
+}
+
+/* Mudança de cor do botão ao passar o mouse */
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+/* mudar a cor dos itens que precisam de mais doações */
+.highlight {
+    background-color: red;
+    font-weight: bold;
+}
