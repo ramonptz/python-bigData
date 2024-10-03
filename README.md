@@ -1,6 +1,6 @@
-# Pastoral Social - Gestão de Alimentos
+# (PROTOTIPO) Pastoral Social - Gestão de Alimentos
 
-Este projeto é uma extensão da faculdade Estácio, parte da disciplina de Big Data e Python. A aplicação foi desenvolvida para auxiliar na gestão de recebimento e distribuição de alimentos para famílias carentes, promovendo eficiência e organização no processo.
+Este projeto é uma extensão da faculdade Estácio, parte da disciplina de Topicos Big Data em Python. A aplicação foi desenvolvida para auxiliar na gestão de recebimento e distribuição de alimentos para famílias carentes, promovendo eficiência e organização no processo.
 
 ## Tecnologias Utilizadas
 
